@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Join Quiz</title>
+</head>
+<body>
+
+<h1>Fun Saturday Quiz</h1>
+
+<input type="text" id="name" placeholder="Enter Name">
+
+<br><br>
+
+<select id="team">
+<option value="A">Team A</option>
+<option value="B">Team B</option>
+</select>
+
+<br><br>
+
+<button onclick="joinQuiz()">Join Quiz</button>
+
+<p id="msg"></p>
+
+<script>
+function joinQuiz(){
+let name=document.getElementById("name").value;
+let team=document.getElementById("team").value;
+
+document.getElementById("msg").innerHTML=
+name + " Joined Team " + team;
+}
+</script>
+
+</body>
+</html>
