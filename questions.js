@@ -1,4 +1,4 @@
-```javascript
+
 window.questions = [
 
 {
