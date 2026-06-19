@@ -77,4 +77,3 @@ window.startQuiz = startQuiz;
 window.nextQuestion = nextQuestion;
 window.addScoreA = addScoreA;
 window.addScoreB = addScoreB;
-```
