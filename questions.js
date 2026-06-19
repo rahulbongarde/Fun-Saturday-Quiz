@@ -1,4 +1,5 @@
-export const questions = [
+```javascript
+window.questions = [
 
 {
 question:"👂 + 🐦",
@@ -51,3 +52,4 @@ answer:"Brainstorm"
 }
 
 ];
+```
