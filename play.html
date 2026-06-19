@@ -39,10 +39,8 @@ push
 
 window.submitAnswer = function(){
 
-alert("Button Working");
-
 let name=document.getElementById("name").value;
-let team=document.getElementById("team").value;  
+let team=document.getElementById("team").value;
 let answer=document.getElementById("answer").value;
 
 if(name==="" || answer===""){
@@ -56,6 +54,13 @@ team:team,
 answer:answer,
 time:Date.now()
 });
+
+document.getElementById("msg").innerHTML =
+"✅ Answer Submitted : " + answer;
+
+document.getElementById("answer").value="";
+
+};
 
 document.getElementById("msg").innerHTML =
 "✅ Answer Submitted : " + answer;
