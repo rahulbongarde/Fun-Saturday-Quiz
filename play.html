@@ -1,67 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Submit Answer</title>
-<style>
-body{
-font-family:Arial;
-text-align:center;
-padding:50px;
-background:#f4f4f4;
-}
+<script type="module">
 
-input{
-padding:10px;
-font-size:20px;
-width:300px;
-margin:10px;
-}
+import { db } from "./firebase.js";
 
-button{
-padding:12px 20px;
-font-size:20px;
-background:#1976d2;
-color:white;
-border:none;
-border-radius:8px;
-}
+import {
+ref,
+push
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-#msg{
-font-size:24px;
-color:green;
-margin-top:20px;
-}
-</style>
-</head>
-
-<body>
-
-<h1>🏆 Fun Saturday Quiz</h1>
-
-<input id="name" placeholder="Enter Your Name">
-
-<br>
-
-<input id="answer" placeholder="Enter Answer">
-
-<br><br>
-
-<button onclick="submitAnswer()">Submit Answer</button>
-
-<p id="msg"></p>
-
-<script>
-function submitAnswer(){
+window.submitAnswer = function(){
 
 let name=document.getElementById("name").value;
 let answer=document.getElementById("answer").value;
 
+if(name==="" || answer===""){
+alert("Enter Name & Answer");
+return;
+}
+
+push(ref(db,"answers"),{
+name:name,
+answer:answer,
+time:Date.now()
+});
+
 document.getElementById("msg").innerHTML=
-"✅ Answer Submitted : " + answer;
+"✅ Answer Submitted : "+answer;
+
+document.getElementById("answer").value="";
 
 }
-</script>
 
-</body>
-</html>
+</script>
