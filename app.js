@@ -1,11 +1,4 @@
-import { questions } from "./questions.js";
-import { db } from "./firebase.js";
-
-import {
-ref,
-onValue
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
+```javascript
 let current=0;
 let scoreA=0;
 let scoreB=0;
@@ -18,8 +11,8 @@ loadQuestion();
 
 function loadQuestion(){
 
-document.getElementById("question").innerHTML=
-questions[current].question;
+document.getElementById("question").innerHTML =
+window.questions[current].question;
 
 document.getElementById("answer").style.display="none";
 
@@ -39,8 +32,8 @@ clearInterval(timer);
 
 document.getElementById("answer").style.display="block";
 
-document.getElementById("answer").innerHTML=
-"✅ "+questions[current].answer;
+document.getElementById("answer").innerHTML =
+"✅ " + window.questions[current].answer;
 
 }
 
@@ -52,7 +45,7 @@ function nextQuestion(){
 
 current++;
 
-if(current>=questions.length){
+if(current>=window.questions.length){
 
 alert("Quiz Completed");
 
@@ -84,40 +77,4 @@ window.startQuiz = startQuiz;
 window.nextQuestion = nextQuestion;
 window.addScoreA = addScoreA;
 window.addScoreB = addScoreB;
-
-/* LIVE ANSWERS */
-
-const answersRef = ref(db,"answers");
-
-onValue(answersRef,(snapshot)=>{
-
-const data = snapshot.val();
-
-if(!data) return;
-
-let html="";
-
-for(let key in data){
-
-html += `
-<p>
-🏷️ ${data[key].name}
- (${data[key].team || "No Team"})
- ➜ ${data[key].answer}
-</p>
-`;
-
-}
-
-const liveAnswers =
-document.getElementById("liveAnswers");
-
-if(liveAnswers){
-
-liveAnswers.innerHTML = html;
-
-}
-
-});
 ```
-
