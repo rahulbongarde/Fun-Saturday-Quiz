@@ -77,3 +77,51 @@ window.startQuiz = startQuiz;
 window.nextQuestion = nextQuestion;
 window.addScoreA = addScoreA;
 window.addScoreB = addScoreB;
+/* LIVE SUBMITTED ANSWERS */
+
+setInterval(async () => {
+
+    try {
+
+        const response = await fetch(
+        "https://funsaturdayquiz-default-rtdb.asia-southeast1.firebasedatabase.app/answers.json");
+
+        const data = await response.json();
+
+        let html = "";
+
+        if(data){
+
+            const values = Object.values(data);
+
+            values.sort((a,b)=>a.time-b.time);
+
+            values.forEach(item=>{
+
+                html += `
+                <div style="
+                font-size:18px;
+                margin:5px;
+                padding:5px;
+                background:white;
+                border-radius:8px;">
+                🏷️ ${item.name}
+                (${item.team || "No Team"})
+                ➜ ${item.answer}
+                </div>
+                `;
+            });
+
+        }
+
+        document.getElementById("liveAnswers").innerHTML = html;
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+    }
+
+},2000);
