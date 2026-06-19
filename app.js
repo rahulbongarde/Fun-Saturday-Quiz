@@ -1,5 +1,6 @@
-```javascript
+import { questions } from "./questions.js";
 import { db } from "./firebase.js";
+
 import {
 ref,
 onValue
