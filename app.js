@@ -1,4 +1,4 @@
-```javascript
+
 let current=0;
 let scoreA=0;
 let scoreB=0;
