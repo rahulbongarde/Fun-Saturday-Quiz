@@ -52,4 +52,3 @@ answer:"Brainstorm"
 }
 
 ];
-```
