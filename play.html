@@ -42,6 +42,7 @@ window.submitAnswer = function(){
 alert("Button Working");
 
 let name=document.getElementById("name").value;
+let team=document.getElementById("team").value;  
 let answer=document.getElementById("answer").value;
 
 if(name==="" || answer===""){
@@ -51,6 +52,7 @@ return;
 
 push(ref(db,"answers"),{
 name:name,
+team:team,
 answer:answer,
 time:Date.now()
 });
