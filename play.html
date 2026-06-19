@@ -1,1 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Submit Answer</title>
+<style>
+body{
+font-family:Arial;
+text-align:center;
+padding:50px;
+background:#f4f4f4;
+}
 
+input{
+padding:10px;
+font-size:20px;
+width:300px;
+margin:10px;
+}
+
+button{
+padding:12px 20px;
+font-size:20px;
+background:#1976d2;
+color:white;
+border:none;
+border-radius:8px;
+}
+
+#msg{
+font-size:24px;
+color:green;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🏆 Fun Saturday Quiz</h1>
+
+<input id="name" placeholder="Enter Your Name">
+
+<br>
+
+<input id="answer" placeholder="Enter Answer">
+
+<br><br>
+
+<button onclick="submitAnswer()">Submit Answer</button>
+
+<p id="msg"></p>
+
+<script>
+function submitAnswer(){
+
+let name=document.getElementById("name").value;
+let answer=document.getElementById("answer").value;
+
+document.getElementById("msg").innerHTML=
+"✅ Answer Submitted : " + answer;
+
+}
+</script>
+
+</body>
+</html>
