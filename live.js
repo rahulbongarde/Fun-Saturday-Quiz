@@ -1,4 +1,4 @@
-```javascript
+
 setInterval(async () => {
 
     try {
@@ -45,4 +45,3 @@ setInterval(async () => {
     }
 
 },2000);
-```
