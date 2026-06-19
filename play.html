@@ -27,7 +27,6 @@
 <button onclick="submitAnswer()">Submit Answer</button>
 
 <p id="msg"></p>
-
 <script type="module">
 
 import { db } from "./firebase.js";
@@ -61,13 +60,6 @@ document.getElementById("msg").innerHTML =
 document.getElementById("answer").value="";
 
 };
-
-document.getElementById("msg").innerHTML =
-"✅ Answer Submitted : " + answer;
-
-document.getElementById("answer").value="";
-
-}
 
 </script>
 
