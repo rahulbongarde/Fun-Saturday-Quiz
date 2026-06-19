@@ -1,3 +1,10 @@
+```javascript
+import { db } from "./firebase.js";
+import {
+ref,
+onValue
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
 let current=0;
 let scoreA=0;
 let scoreB=0;
@@ -71,3 +78,45 @@ scoreB++;
 document.getElementById("scoreB").innerHTML=scoreB;
 
 }
+
+window.startQuiz = startQuiz;
+window.nextQuestion = nextQuestion;
+window.addScoreA = addScoreA;
+window.addScoreB = addScoreB;
+
+/* LIVE ANSWERS */
+
+const answersRef = ref(db,"answers");
+
+onValue(answersRef,(snapshot)=>{
+
+const data = snapshot.val();
+
+if(!data) return;
+
+let html="";
+
+for(let key in data){
+
+html += `
+<p>
+🏷️ ${data[key].name}
+ (${data[key].team || "No Team"})
+ ➜ ${data[key].answer}
+</p>
+`;
+
+}
+
+const liveAnswers =
+document.getElementById("liveAnswers");
+
+if(liveAnswers){
+
+liveAnswers.innerHTML = html;
+
+}
+
+});
+```
+
