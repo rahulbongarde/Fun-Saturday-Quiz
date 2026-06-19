@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Fun Saturday Quiz</title>
+</head>
+
+<body>
+
+<h1>🏆 Fun Saturday Quiz</h1>
+
+<input id="name" placeholder="Enter Your Name">
+
+<br><br>
+
+<input id="answer" placeholder="Enter Answer">
+
+<br><br>
+
+<button onclick="submitAnswer()">Submit Answer</button>
+
+<p id="msg"></p>
+
 <script type="module">
 
 import { db } from "./firebase.js";
@@ -23,11 +46,14 @@ answer:answer,
 time:Date.now()
 });
 
-document.getElementById("msg").innerHTML=
-"✅ Answer Submitted : "+answer;
+document.getElementById("msg").innerHTML =
+"✅ Answer Submitted : " + answer;
 
 document.getElementById("answer").value="";
 
 }
 
 </script>
+
+</body>
+</html>
