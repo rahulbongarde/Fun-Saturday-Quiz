@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Join Quiz</title>
+    <title>Join Quiz</title>
 </head>
+
 <body>
 
 <h1>Fun Saturday Quiz</h1>
@@ -12,25 +14,58 @@
 <br><br>
 
 <select id="team">
-<option value="A">Team A</option>
-<option value="B">Team B</option>
+    <option value="Team A">Team A</option>
+    <option value="Team B">Team B</option>
 </select>
 
 <br><br>
 
-<button onclick="joinQuiz()">Join Quiz</button>
+<input type="text" id="answer" placeholder="Enter Answer">
+
+<br><br>
+
+<button onclick="submitAnswer()">
+    Submit Answer
+</button>
 
 <p id="msg"></p>
 
 <script>
-function joinQuiz(){
-let name=document.getElementById("name").value;
-let team=document.getElementById("team").value;
 
-document.getElementById("msg").innerHTML=
-name + " Joined Team " + team;
+async function submitAnswer(){
+
+    const name =
+        document.getElementById("name").value;
+
+    const team =
+        document.getElementById("team").value;
+
+    const answer =
+        document.getElementById("answer").value;
+
+    await fetch(
+    "https://funsaturdayquiz-default-rtdb.asia-southeast1.firebasedatabase.app/answers.json",
+    {
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            name:name,
+            team:team,
+            answer:answer,
+            time:Date.now()
+        })
+    });
+
+    document.getElementById("msg").innerHTML =
+        "Answer Submitted Successfully";
+
+    document.getElementById("answer").value = "";
 }
+
 </script>
 
 </body>
+
 </html>
