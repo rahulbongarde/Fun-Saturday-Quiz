@@ -43,11 +43,30 @@ function loadQuestion() {
     }, 1000);
 }
 
-function nextQuestion() {
+async function nextQuestion() {
+
+    try {
+
+        await fetch(
+        "https://funsaturdayquiz-default-rtdb.asia-southeast1.firebasedatabase.app/answers.json",
+        {
+            method: "DELETE"
+        });
+
+    } catch (error) {
+
+        console.log(error);
+
+    }
+
+    document.getElementById("liveAnswers").innerHTML = "";
 
     current++;
 
     if (current >= window.questions.length) {
+
+        alert("Quiz Completed");
+
         current = 0;
     }
 
@@ -62,6 +81,12 @@ function addScoreA() {
 
     document.getElementById("winner").innerHTML =
         "🏆 Winner : Team A";
+
+    if (scoreA >= 5) {
+
+        alert("🏆 Team A Wins Quiz");
+
+    }
 }
 
 function addScoreB() {
@@ -72,6 +97,12 @@ function addScoreB() {
 
     document.getElementById("winner").innerHTML =
         "🏆 Winner : Team B";
+
+    if (scoreB >= 5) {
+
+        alert("🏆 Team B Wins Quiz");
+
+    }
 }
 
 window.startQuiz = startQuiz;
