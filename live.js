@@ -10,14 +10,13 @@ setInterval(async () => {
 
         const data = await response.json();
 
-        if(!data){
+        if (!data) {
 
             document.getElementById("liveAnswers").innerHTML = "";
 
             alreadyWinner = false;
 
             return;
-
         }
 
         let html = "";
@@ -43,8 +42,10 @@ setInterval(async () => {
 
             if(
                 !alreadyWinner &&
-                item.answer.toLowerCase().trim() ===
-                window.questions[current].answer.toLowerCase().trim()
+                item.answer.trim().toLowerCase() ===
+                window.questions[current].answer
+                .trim()
+                .toLowerCase()
             ){
 
                 alreadyWinner = true;
@@ -87,4 +88,4 @@ setInterval(async () => {
 
     }
 
-},2000);
+},1000);
