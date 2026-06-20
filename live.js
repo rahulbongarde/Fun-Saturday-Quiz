@@ -9,7 +9,9 @@ setInterval(async () => {
         const data = await response.json();
 
         if (!data) {
+
             document.getElementById("liveAnswers").innerHTML = "";
+
             return;
         }
 
@@ -19,15 +21,12 @@ setInterval(async () => {
 
         values.sort((a,b)=>b.time-a.time);
 
-        // फक्त शेवटची 5 answers दाखवेल
-        const latest = values.slice(0,5);
-
-        latest.forEach(item => {
+        values.forEach(item => {
 
             html += `
             <div style="
             background:white;
-            padding:8px;
+            padding:10px;
             margin:5px;
             border-radius:10px;
             font-size:18px;">
@@ -39,7 +38,8 @@ setInterval(async () => {
 
         });
 
-        document.getElementById("liveAnswers").innerHTML = html;
+        document.getElementById("liveAnswers").innerHTML =
+            html;
 
     }
 
