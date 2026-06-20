@@ -30,41 +30,35 @@ function loadQuestion() {
 
         document.getElementById("timer").innerHTML = time;
 
-        if (time <= 0) {
+        if(time <= 0){
 
             clearInterval(timer);
 
-            document.getElementById("answer").style.display = "block";
+            document.getElementById("answer").style.display =
+            "block";
 
             document.getElementById("answer").innerHTML =
-                "✅ " + window.questions[current].answer;
+            "✅ " + window.questions[current].answer;
 
         }
 
-    }, 1000);
+    },1000);
+
 }
 
-async function nextQuestion() {
+async function nextQuestion(){
 
-    try {
-
-        await fetch(
-        "https://funsaturdayquiz-default-rtdb.asia-southeast1.firebasedatabase.app/answers.json",
-        {
-            method: "DELETE"
-        });
-
-    } catch (error) {
-
-        console.log(error);
-
-    }
+    await fetch(
+    "https://funsaturdayquiz-default-rtdb.asia-southeast1.firebasedatabase.app/answers.json",
+    {
+        method:"DELETE"
+    });
 
     document.getElementById("liveAnswers").innerHTML = "";
 
     current++;
 
-    if (current >= window.questions.length) {
+    if(current >= window.questions.length){
 
         alert("Quiz Completed");
 
@@ -73,31 +67,8 @@ async function nextQuestion() {
     }
 
     loadQuestion();
-}
-
-function addScoreA() {
-
-    scoreA++;
-
-    document.getElementById("scoreA").innerHTML = scoreA;
-
-    document.getElementById("winner").innerHTML =
-        "🏆 Winner : Team A";
-
-}
-
-function addScoreB() {
-
-    scoreB++;
-
-    document.getElementById("scoreB").innerHTML = scoreB;
-
-    document.getElementById("winner").innerHTML =
-        "🏆 Winner : Team B";
 
 }
 
 window.startQuiz = startQuiz;
 window.nextQuestion = nextQuestion;
-window.addScoreA = addScoreA;
-window.addScoreB = addScoreB;
