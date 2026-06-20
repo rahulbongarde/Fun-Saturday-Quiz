@@ -6,70 +6,79 @@ let timer;
 let time=10;
 
 function startQuiz(){
-loadQuestion();
+    loadQuestion();
 }
 
 function loadQuestion(){
 
-document.getElementById("question").innerHTML =
-window.questions[current].question;
+    document.getElementById("question").innerHTML =
+    window.questions[current].question;
 
-document.getElementById("answer").style.display="none";
+    document.getElementById("answer").style.display="none";
 
-time=10;
+    document.getElementById("winner").innerHTML =
+    "🏆 Winner : Waiting...";
 
-clearInterval(timer);
+    time=10;
 
-timer=setInterval(()=>{
+    clearInterval(timer);
 
-document.getElementById("timer").innerHTML=time;
+    timer=setInterval(()=>{
 
-time--;
+        document.getElementById("timer").innerHTML=time;
 
-if(time<0){
+        time--;
 
-clearInterval(timer);
+        if(time<0){
 
-document.getElementById("answer").style.display="block";
+            clearInterval(timer);
 
-document.getElementById("answer").innerHTML =
-"✅ " + window.questions[current].answer;
+            document.getElementById("answer").style.display="block";
 
-}
+            document.getElementById("answer").innerHTML =
+            "✅ " + window.questions[current].answer;
 
-},1000);
+        }
+
+    },1000);
 
 }
 
 function nextQuestion(){
 
-current++;
+    current++;
 
-if(current>=window.questions.length){
+    if(current>=window.questions.length){
 
-alert("Quiz Completed");
+        alert("Quiz Completed");
 
-current=0;
+        current=0;
 
-}
+    }
 
-loadQuestion();
+    loadQuestion();
 
 }
 
 function addScoreA(){
 
-scoreA++;
+    scoreA++;
 
-document.getElementById("scoreA").innerHTML=scoreA;
+    document.getElementById("scoreA").innerHTML = scoreA;
+
+    document.getElementById("winner").innerHTML =
+    "🏆 Winner : Team A";
 
 }
 
 function addScoreB(){
 
-scoreB++;
+    scoreB++;
 
-document.getElementById("scoreB").innerHTML=scoreB;
+    document.getElementById("scoreB").innerHTML = scoreB;
+
+    document.getElementById("winner").innerHTML =
+    "🏆 Winner : Team B";
 
 }
 
@@ -77,3 +86,4 @@ window.startQuiz = startQuiz;
 window.nextQuestion = nextQuestion;
 window.addScoreA = addScoreA;
 window.addScoreB = addScoreB;
+```
