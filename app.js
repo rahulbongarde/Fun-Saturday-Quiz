@@ -1,4 +1,4 @@
-
+```javascript
 let current = 0;
 let scoreA = 0;
 let scoreB = 0;
@@ -36,7 +36,6 @@ function loadQuestion() {
 
             document.getElementById("answer").innerHTML =
                 "✅ " + window.questions[current].answer;
-
         }
 
     }, 1000);
@@ -54,16 +53,12 @@ function nextQuestion() {
 }
 
 function addScoreA() {
-
     scoreA++;
-
     document.getElementById("scoreA").innerHTML = scoreA;
 }
 
 function addScoreB() {
-
     scoreB++;
-
     document.getElementById("scoreB").innerHTML = scoreB;
 }
 
