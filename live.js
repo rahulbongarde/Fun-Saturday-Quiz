@@ -1,3 +1,5 @@
+let alreadyWinner = false;
+
 setInterval(async () => {
 
     try {
@@ -8,18 +10,21 @@ setInterval(async () => {
 
         const data = await response.json();
 
-        if (!data) {
+        if(!data){
 
             document.getElementById("liveAnswers").innerHTML = "";
 
+            alreadyWinner = false;
+
             return;
+
         }
 
         let html = "";
 
         const values = Object.values(data);
 
-        values.sort((a,b)=>b.time-a.time);
+        values.sort((a,b)=>a.time-b.time);
 
         values.forEach(item => {
 
@@ -36,10 +41,43 @@ setInterval(async () => {
             </div>
             `;
 
+            if(
+                !alreadyWinner &&
+                item.answer.toLowerCase().trim() ===
+                window.questions[current].answer.toLowerCase().trim()
+            ){
+
+                alreadyWinner = true;
+
+                document.getElementById("winner").innerHTML =
+                "🏆 Winner : " +
+                item.name +
+                " (" + item.team + ")";
+
+                if(item.team === "Team A"){
+
+                    scoreA++;
+
+                    document.getElementById("scoreA").innerHTML =
+                    scoreA;
+
+                }
+
+                if(item.team === "Team B"){
+
+                    scoreB++;
+
+                    document.getElementById("scoreB").innerHTML =
+                    scoreB;
+
+                }
+
+            }
+
         });
 
         document.getElementById("liveAnswers").innerHTML =
-            html;
+        html;
 
     }
 
