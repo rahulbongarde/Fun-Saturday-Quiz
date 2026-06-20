@@ -41,4 +41,3 @@ window.questions = [
         answer: "Brainstorm"
     }
 ];
-```
