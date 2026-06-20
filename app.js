@@ -16,9 +16,6 @@ function loadQuestion() {
 
     document.getElementById("answer").style.display = "none";
 
-    document.getElementById("winner").innerHTML =
-        "🏆 Winner : Waiting...";
-
     time = 10;
 
     document.getElementById("timer").innerHTML = time;
@@ -39,6 +36,7 @@ function loadQuestion() {
 
             document.getElementById("answer").innerHTML =
                 "✅ " + window.questions[current].answer;
+
         }
 
     }, 1000);
@@ -60,9 +58,6 @@ function addScoreA() {
     scoreA++;
 
     document.getElementById("scoreA").innerHTML = scoreA;
-
-    document.getElementById("winner").innerHTML =
-        "🏆 Winner : Team A";
 }
 
 function addScoreB() {
@@ -70,9 +65,6 @@ function addScoreB() {
     scoreB++;
 
     document.getElementById("scoreB").innerHTML = scoreB;
-
-    document.getElementById("winner").innerHTML =
-        "🏆 Winner : Team B";
 }
 
 window.startQuiz = startQuiz;
