@@ -1,4 +1,14 @@
 
+let current = 0;
+let scoreA = 0;
+let scoreB = 0;
+let timer;
+let time = 10;
+
+function startQuiz() {
+    loadQuestion();
+}
+
 function loadQuestion() {
 
     document.getElementById("question").innerHTML =
@@ -15,7 +25,7 @@ function loadQuestion() {
 
     clearInterval(timer);
 
-    timer = setInterval(() => {
+    timer = setInterval(function () {
 
         time--;
 
@@ -29,10 +39,44 @@ function loadQuestion() {
 
             document.getElementById("answer").innerHTML =
                 "✅ " + window.questions[current].answer;
-
         }
 
     }, 1000);
-
 }
+
+function nextQuestion() {
+
+    current++;
+
+    if (current >= window.questions.length) {
+        current = 0;
+    }
+
+    loadQuestion();
+}
+
+function addScoreA() {
+
+    scoreA++;
+
+    document.getElementById("scoreA").innerHTML = scoreA;
+
+    document.getElementById("winner").innerHTML =
+        "🏆 Winner : Team A";
+}
+
+function addScoreB() {
+
+    scoreB++;
+
+    document.getElementById("scoreB").innerHTML = scoreB;
+
+    document.getElementById("winner").innerHTML =
+        "🏆 Winner : Team B";
+}
+
+window.startQuiz = startQuiz;
+window.nextQuestion = nextQuestion;
+window.addScoreA = addScoreA;
+window.addScoreB = addScoreB;
 ```
