@@ -1,10 +1,3 @@
-function startQuiz() {
-    alert("START CLICKED");
-    loadQuestion();
-}
-let current = 0;
-let scoreA = 0;
-```
 
 let current = 0;
 let scoreA = 0;
@@ -13,7 +6,9 @@ let timer;
 let time = 10;
 
 function startQuiz() {
+
     loadQuestion();
+
 }
 
 function loadQuestion() {
@@ -28,15 +23,17 @@ function loadQuestion() {
 
     time = 10;
 
+    document.getElementById("timer").innerHTML = time;
+
     clearInterval(timer);
 
     timer = setInterval(() => {
 
-        document.getElementById("timer").innerHTML = time;
-
         time--;
 
-        if (time < 0) {
+        document.getElementById("timer").innerHTML = time;
+
+        if (time <= 0) {
 
             clearInterval(timer);
 
@@ -56,7 +53,9 @@ function nextQuestion() {
     current++;
 
     if (current >= window.questions.length) {
+
         current = 0;
+
     }
 
     loadQuestion();
