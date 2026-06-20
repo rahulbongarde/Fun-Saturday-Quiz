@@ -1,4 +1,4 @@
-```javascript id="uvvng9"
+
 window.questions = [
     {
         question: "👂 + 🐦",
