@@ -1,65 +1,93 @@
 
-<!DOCTYPE html>
-<html>
+let current=0;
+let scoreA=0;
+let scoreB=0;
+let timer;
+let time=10;
 
-<head>
-    <title>Fun Saturday Quiz</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+function startQuiz(){
+    loadQuestion();
+}
 
-<body>
+function loadQuestion(){
 
-    <h1>🏆 FUN SATURDAY QUIZ 🏆</h1>
+    document.getElementById("question").innerHTML =
+    window.questions[current].question;
 
-    <div class="team">
-        <h2>Team A</h2>
-        <div class="score" id="scoreA">0</div>
-    </div>
+    document.getElementById("answer").style.display="none";
 
-    <div class="team">
-        <h2>Team B</h2>
-        <div class="score" id="scoreB">0</div>
-    </div>
+    document.getElementById("winner").innerHTML =
+    "🏆 Winner : Waiting...";
 
-    <h2 id="question">
-        Press Start Quiz
-    </h2>
+    time=10;
 
-    <div class="timer" id="timer">
-        10
-    </div>
+    clearInterval(timer);
 
-    <h2 id="answer" style="display:none;color:green;">
-        Answer
-    </h2>
+    timer=setInterval(()=>{
 
-    <h3>📱 Submitted Answers</h3>
+        document.getElementById("timer").innerHTML=time;
 
-    <div id="liveAnswers"></div>
+        time--;
 
-    <br>
+        if(time<0){
 
-    <button onclick="startQuiz()">
-        Start Quiz
-    </button>
+            clearInterval(timer);
 
-    <button onclick="nextQuestion()">
-        Next Question
-    </button>
+            document.getElementById("answer").style.display="block";
 
-    <br><br>
+            document.getElementById("answer").innerHTML =
+            "✅ " + window.questions[current].answer;
 
-    <button onclick="addScoreA()">
-        + Team A
-    </button>
+        }
 
-    <button onclick="addScoreB()">
-        + Team B
-    </button>
+    },1000);
 
-    <script src="questions.js"></script>
-<script src="app.js"></script>
-<script src="live.js"></script>
+}
 
-</body>
-</html>
+function nextQuestion(){
+
+    current++;
+
+    if(current>=window.questions.length){
+
+        alert("Quiz Completed");
+
+        current=0;
+
+    }
+
+    loadQuestion();
+
+}
+
+function showWinner(name){
+
+    document.getElementById("winner").innerHTML =
+    "🏆 Winner : " + name;
+
+}
+
+function addScoreA(){
+
+    scoreA++;
+
+    document.getElementById("scoreA").innerHTML=scoreA;
+
+    showWinner("Team A");
+
+}
+
+function addScoreB(){
+
+    scoreB++;
+
+    document.getElementById("scoreB").innerHTML=scoreB;
+
+    showWinner("Team B");
+
+}
+
+window.startQuiz = startQuiz;
+window.nextQuestion = nextQuestion;
+window.addScoreA = addScoreA;
+window.addScoreB = addScoreB;
