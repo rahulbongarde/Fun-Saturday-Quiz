@@ -1,4 +1,3 @@
-```javascript
 let current = 0;
 let scoreA = 0;
 let scoreB = 0;
@@ -66,4 +65,3 @@ window.startQuiz = startQuiz;
 window.nextQuestion = nextQuestion;
 window.addScoreA = addScoreA;
 window.addScoreB = addScoreB;
-```
