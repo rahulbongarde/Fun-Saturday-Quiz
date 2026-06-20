@@ -1,84 +1,80 @@
 
-let current=0;
-let scoreA=0;
-let scoreB=0;
+let current = 0;
+let scoreA = 0;
+let scoreB = 0;
 let timer;
-let time=10;
+let time = 10;
 
-function startQuiz(){
+function startQuiz() {
     loadQuestion();
 }
 
-function loadQuestion(){
+function loadQuestion() {
 
     document.getElementById("question").innerHTML =
-    window.questions[current].question;
+        window.questions[current].question;
 
-    document.getElementById("answer").style.display="none";
+    document.getElementById("answer").style.display = "none";
 
     document.getElementById("winner").innerHTML =
-    "🏆 Winner : Waiting...";
+        "🏆 Winner : Waiting...";
 
-    time=10;
+    time = 10;
 
     clearInterval(timer);
 
-    timer=setInterval(()=>{
+    timer = setInterval(() => {
 
-        document.getElementById("timer").innerHTML=time;
+        document.getElementById("timer").innerHTML = time;
 
         time--;
 
-        if(time<0){
+        if (time < 0) {
 
             clearInterval(timer);
 
-            document.getElementById("answer").style.display="block";
+            document.getElementById("answer").style.display = "block";
 
             document.getElementById("answer").innerHTML =
-            "✅ " + window.questions[current].answer;
+                "✅ " + window.questions[current].answer;
 
         }
 
-    },1000);
+    }, 1000);
 
 }
 
-function nextQuestion(){
+function nextQuestion() {
 
     current++;
 
-    if(current>=window.questions.length){
-
-        alert("Quiz Completed");
-
-        current=0;
-
+    if (current >= window.questions.length) {
+        current = 0;
     }
 
     loadQuestion();
 
 }
 
-function addScoreA(){
+function addScoreA() {
 
     scoreA++;
 
     document.getElementById("scoreA").innerHTML = scoreA;
 
     document.getElementById("winner").innerHTML =
-    "🏆 Winner : Team A";
+        "🏆 Winner : Team A";
 
 }
 
-function addScoreB(){
+function addScoreB() {
 
     scoreB++;
 
     document.getElementById("scoreB").innerHTML = scoreB;
 
     document.getElementById("winner").innerHTML =
-    "🏆 Winner : Team B";
+        "🏆 Winner : Team B";
 
 }
 
