@@ -65,9 +65,9 @@ async function nextQuestion(){
         current = 0;
 
     }
+alreadyWinner = false;
 
-    loadQuestion();
-
+loadQuestion();
 }
 
 window.startQuiz = startQuiz;
