@@ -1,4 +1,10 @@
 
+alert("APP LOADED");
+
+let current = 0;
+let scoreA = 0;
+```
+
 let current = 0;
 let scoreA = 0;
 let scoreB = 0;
