@@ -13,8 +13,12 @@ function startQuiz() {
 
 function loadQuestion() {
 
+    console.log(window.questions);
+
     document.getElementById("question").innerHTML =
         window.questions[current].question;
+
+}
 
     document.getElementById("answer").style.display = "none";
 
