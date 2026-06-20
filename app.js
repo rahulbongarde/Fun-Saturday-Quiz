@@ -24,7 +24,7 @@ function loadQuestion() {
 
     clearInterval(timer);
 
-    timer = setInterval(function () {
+    timer = setInterval(() => {
 
         time--;
 
@@ -38,6 +38,7 @@ function loadQuestion() {
 
             document.getElementById("answer").innerHTML =
                 "✅ " + window.questions[current].answer;
+
         }
 
     }, 1000);
@@ -68,6 +69,7 @@ async function nextQuestion() {
         alert("Quiz Completed");
 
         current = 0;
+
     }
 
     loadQuestion();
@@ -82,11 +84,6 @@ function addScoreA() {
     document.getElementById("winner").innerHTML =
         "🏆 Winner : Team A";
 
-    if (scoreA >= 5) {
-
-        alert("🏆 Team A Wins Quiz");
-
-    }
 }
 
 function addScoreB() {
@@ -98,11 +95,6 @@ function addScoreB() {
     document.getElementById("winner").innerHTML =
         "🏆 Winner : Team B";
 
-    if (scoreB >= 5) {
-
-        alert("🏆 Team B Wins Quiz");
-
-    }
 }
 
 window.startQuiz = startQuiz;
