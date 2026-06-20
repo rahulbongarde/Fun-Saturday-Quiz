@@ -13,7 +13,8 @@ function loadQuestion() {
     document.getElementById("question").innerHTML =
         window.questions[current].question;
 
-    document.getElementById("answer").style.display = "none";
+    document.getElementById("answer").style.display =
+        "none";
 
     document.getElementById("winner").innerHTML =
         "🏆 Winner : Waiting...";
@@ -28,46 +29,47 @@ function loadQuestion() {
 
         time--;
 
-        document.getElementById("timer").innerHTML = time;
+        document.getElementById("timer").innerHTML =
+            time;
 
-        if(time <= 0){
+        if (time <= 0) {
 
             clearInterval(timer);
 
             document.getElementById("answer").style.display =
-            "block";
+                "block";
 
             document.getElementById("answer").innerHTML =
-            "✅ " + window.questions[current].answer;
-
+                "✅ " +
+                window.questions[current].answer;
         }
 
-    },1000);
-
+    }, 1000);
 }
 
-async function nextQuestion(){
+async function nextQuestion() {
 
     await fetch(
     "https://funsaturdayquiz-default-rtdb.asia-southeast1.firebasedatabase.app/answers.json",
     {
-        method:"DELETE"
+        method: "DELETE"
     });
 
-    document.getElementById("liveAnswers").innerHTML = "";
+    document.getElementById("liveAnswers").innerHTML =
+        "";
+
+    alreadyWinner = false;
 
     current++;
 
-    if(current >= window.questions.length){
+    if (current >= window.questions.length) {
 
         alert("Quiz Completed");
 
         current = 0;
-
     }
-alreadyWinner = false;
 
-loadQuestion();
+    loadQuestion();
 }
 
 window.startQuiz = startQuiz;
