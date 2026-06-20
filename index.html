@@ -1,93 +1,73 @@
 
-let current=0;
-let scoreA=0;
-let scoreB=0;
-let timer;
-let time=10;
+<!DOCTYPE html>
+<html>
 
-function startQuiz(){
-    loadQuestion();
-}
+<head>
+    <title>Fun Saturday Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-function loadQuestion(){
+<body>
 
-    document.getElementById("question").innerHTML =
-    window.questions[current].question;
+    <h1>🏆 FUN SATURDAY QUIZ 🏆</h1>
 
-    document.getElementById("answer").style.display="none";
+    <div class="team">
+        <h2>Team A</h2>
+        <div class="score" id="scoreA">0</div>
+    </div>
 
-    document.getElementById("winner").innerHTML =
-    "🏆 Winner : Waiting...";
+    <div class="team">
+        <h2>Team B</h2>
+        <div class="score" id="scoreB">0</div>
+    </div>
 
-    time=10;
+    <h2 id="question">
+        Press Start Quiz
+    </h2>
 
-    clearInterval(timer);
+    <div class="timer" id="timer">
+        10
+    </div>
 
-    timer=setInterval(()=>{
+    <h2 id="answer" style="display:none;color:green;">
+        Answer
+    </h2>
 
-        document.getElementById("timer").innerHTML=time;
+    <h2 id="winner" style="
+    color:green;
+    font-size:30px;
+    margin:10px;">
+        🏆 Winner : Waiting...
+    </h2>
 
-        time--;
+    <h3>📱 Submitted Answers</h3>
 
-        if(time<0){
+    <div id="liveAnswers"></div>
 
-            clearInterval(timer);
+    <br>
 
-            document.getElementById("answer").style.display="block";
+    <button onclick="startQuiz()">
+        Start Quiz
+    </button>
 
-            document.getElementById("answer").innerHTML =
-            "✅ " + window.questions[current].answer;
+    <button onclick="nextQuestion()">
+        Next Question
+    </button>
 
-        }
+    <br><br>
 
-    },1000);
+    <button onclick="addScoreA()">
+        + Team A
+    </button>
 
-}
+    <button onclick="addScoreB()">
+        + Team B
+    </button>
 
-function nextQuestion(){
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
 
-    current++;
+</body>
 
-    if(current>=window.questions.length){
-
-        alert("Quiz Completed");
-
-        current=0;
-
-    }
-
-    loadQuestion();
-
-}
-
-function showWinner(name){
-
-    document.getElementById("winner").innerHTML =
-    "🏆 Winner : " + name;
-
-}
-
-function addScoreA(){
-
-    scoreA++;
-
-    document.getElementById("scoreA").innerHTML=scoreA;
-
-    showWinner("Team A");
-
-}
-
-function addScoreB(){
-
-    scoreB++;
-
-    document.getElementById("scoreB").innerHTML=scoreB;
-
-    showWinner("Team B");
-
-}
-
-window.startQuiz = startQuiz;
-window.nextQuestion = nextQuestion;
-window.addScoreA = addScoreA;
-window.addScoreB = addScoreB;
+</html>
+```
