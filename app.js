@@ -1,6 +1,9 @@
 
 alert("APP LOADED");
-
+function startQuiz() {
+    alert("START CLICKED");
+    loadQuestion();
+}
 let current = 0;
 let scoreA = 0;
 ```
