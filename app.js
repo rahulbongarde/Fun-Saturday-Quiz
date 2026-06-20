@@ -1,5 +1,4 @@
 
-alert("APP LOADED");
 function startQuiz() {
     alert("START CLICKED");
     loadQuestion();
