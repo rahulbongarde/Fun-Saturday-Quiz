@@ -1,4 +1,3 @@
-
 function startQuiz() {
     alert("START CLICKED");
     loadQuestion();
